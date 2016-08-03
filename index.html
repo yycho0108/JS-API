@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DropBox-API</title>
+    <script src="jquery-compat-3.0.0-alpha1.js"></script>
+    <script language="JavaScript">
+        $(document).ready(function(){
+           $("#submit").on('click', function(){
+               $.ajax( {
+                   url: 'https://www.dropbox.com/1/oauth2/authorize',
+                   type: 'GET',
+                   dataType: 'jsonp',
+                   contentType: 'application/json',
+                   headers: {
+                       "Authorization": 'Bearer 0dHGzCoXHkAAAAAAAAAJsSsLr7OtCIeNO3pXwXPkHdTjRZEZTyJVgmLZBEM37WRh',
+                       'Dropbox-API-Arg' : '{"path":"/files"}'
+                   },
+//                   beforeSend : function( xhr ) {
+//                       xhr.withCredentials = true;
+//                       //xhr.setRequestHeader('Authorization', 'Bearer 0dHGzCoXHkAAAAAAAAAJsSsLr7OtCIeNO3pXwXPkHdTjRZEZTyJVgmLZBEM37WRh');
+//                       xhr.setRequestHeader( "Access-Control-Allow-Origin", "*");
+//                       //xhr.setRequestHeader( 'Dropbox-API-Arg', '{"path":"/files"}');
+//                   },
+                   success: function(rootresult) {
+                       alert('success');
+                   },
+                   error: function(response) {
+                       alert('error ' + JSON.stringify(response));
+                   }
+               });
+
+           })
+        });
+    </script>
+
+</head>
+<body>
+<span id="submit">Not Clicked</span>
+</body>
+</html>
